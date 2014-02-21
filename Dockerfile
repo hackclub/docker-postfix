@@ -1,5 +1,5 @@
 from ubuntu:12.04
-maintainer Vo Minh Thu <noteed@gmail.com>
+maintainer Zach Latta <zach@zachlatta.com.com>
 
 run echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list # 20103-08-24
 run apt-get update
