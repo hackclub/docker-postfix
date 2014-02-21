@@ -14,21 +14,21 @@ run apt-get install -q -y vim
 
 # Install Postfix.
 run echo "postfix postfix/main_mailer_type string Internet site" > preseed.txt
-run echo "postfix postfix/mailname string mail.example.com" >> preseed.txt
+run echo "postfix postfix/mailname string mail.hackedu.us" >> preseed.txt
 # Use Mailbox format.
 run debconf-set-selections preseed.txt
 run DEBIAN_FRONTEND=noninteractive apt-get install -q -y postfix
 
 run postconf -e myhostname=mail.example.com
-run postconf -e mydestination="mail.example.com, example.com, localhost.localdomain, localhost"
+run postconf -e mydestination="mail.hackedu.us, hackedu.us, localhost.localdomain, localhost"
 run postconf -e mail_spool_directory="/var/spool/mail/"
 run postconf -e mailbox_command=""
 
-# Add a local user to receive mail at someone@example.com, with a delivery directory
+# Add a local user to receive mail at zach@hackedu.us, with a delivery directory
 # (for the Mailbox format).
-run useradd -s /bin/bash someone
-run mkdir /var/spool/mail/someone
-run chown someone:mail /var/spool/mail/someone
+run useradd -s /bin/bash zach
+run mkdir /var/spool/mail/zach
+run chown zach:mail /var/spool/mail/zach
 
 add etc-aliases.txt /etc/aliases
 run chown root:root /etc/aliases
